@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".upload">
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfViewUpload"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        />
+    <TextView
+        android:id="@+id/txtClick"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Presione aca para seleccionar su archivo"
+        android:layout_centerInParent="true"
+        android:background="@color/purple_500"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pdfViewUpload"
+        android:layout_centerHorizontal="true"
+        android:text="Subir Pase"/>
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnUpload"
+        android:text="Eliminar"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
