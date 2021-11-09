@@ -48,7 +48,7 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
         auth=FirebaseAuth.getInstance();
         binding = ActivityPantalla1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.appBarPantalla1.toolbar);
+       // setSupportActionBar(binding.appBarPantalla1.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
@@ -85,7 +85,7 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
                 Intent intent = new Intent(this,upload.class);
                 startActivity(intent);
             return true;
-            case R.id.action_settings:
+            case R.id.item2:
                 auth.signOut();
                 startActivity(new Intent(Pantalla1.this,MainActivity.class));
                 finish();
