@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
 
-
         btnLogin.setOnClickListener(v -> {
             String userLogin, userPass;
             userLogin = correo.getText().toString();
@@ -108,22 +107,23 @@ public class MainActivity extends AppCompatActivity {
             resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
         });
     }
+
     ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            if(result.getResultCode()== Activity.RESULT_OK){
+            if (result.getResultCode() == Activity.RESULT_OK) {
                 Intent intent = result.getData();
 
 
-                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(intent);
-                    try {
-                        // Google Sign In was successful, authenticate with Firebase
-                        GoogleSignInAccount account = task.getResult(ApiException.class);
-                        firebaseAuthWithGoogle(account.getIdToken());
-                    } catch (ApiException e) {
-                    }
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(intent);
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    firebaseAuthWithGoogle(account.getIdToken());
+                } catch (ApiException e) {
                 }
             }
+        }
     });
 
     private void firebaseAuthWithGoogle(String idToken) {
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this,Pantalla1.class);
+                            Intent intent = new Intent(MainActivity.this, Pantalla1.class);
                             startActivity(intent);
                             Toast.makeText(MainActivity.this, "Exito", Toast.LENGTH_SHORT).show();
                         } else {
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(auth.getCurrentUser()!=null){
+        if (auth.getCurrentUser() != null) {
             auth.signOut();
         }
     }

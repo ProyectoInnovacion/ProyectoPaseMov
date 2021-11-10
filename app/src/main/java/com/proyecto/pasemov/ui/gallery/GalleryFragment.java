@@ -29,7 +29,6 @@ public class GalleryFragment extends Fragment {
         View root = binding.getRoot();
 
 
-
         return root;
     }
 
