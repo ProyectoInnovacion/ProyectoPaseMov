@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -37,6 +38,7 @@ public class upload extends AppCompatActivity {
     PDFView pdfUpload;
     FirebaseStorage storage;
     Uri pdfUri;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class upload extends AppCompatActivity {
         clickUpload = findViewById(R.id.txtClick);
         pdfUpload = findViewById(R.id.pdfViewUpload);
         storage = FirebaseStorage.getInstance();
+        auth= FirebaseAuth.getInstance();
         clickUpload.setOnClickListener(v ->
                 mGetContent.launch("application/pdf")
         );
@@ -71,7 +74,7 @@ public class upload extends AppCompatActivity {
         progressDialog.setTitle("Archivo cargando");
         progressDialog.show();
         if (pdfUri != null) {
-            StorageReference reference = storage.getReference().child("pdf/pase" + UUID.randomUUID().toString()/*esto hay que cambiar para login id*/);
+            StorageReference reference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()/*esto hay que cambiar para login id*/);
             reference.putFile(pdfUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

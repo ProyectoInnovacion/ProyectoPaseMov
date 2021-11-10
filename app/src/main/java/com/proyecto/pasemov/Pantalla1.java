@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -27,12 +28,14 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StreamDownloadTask;
 import com.google.firebase.storage.UploadTask;
 import com.proyecto.pasemov.databinding.ActivityPantalla1Binding;
 
@@ -41,6 +44,11 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityPantalla1Binding binding;
     FirebaseAuth auth;
+    StorageReference storageRef;
+    FirebaseApp app;
+    FirebaseStorage storage;
+    PDFView pdfView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +69,26 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_pantalla1);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+        app = FirebaseApp.getInstance();
+        storage = FirebaseStorage.getInstance(app);
+        auth= FirebaseAuth.getInstance();
+        storageRef = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");
+        pdfView=findViewById(R.id.pdfPrincipal);
+
+        storageRef.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+
+                pdfView.fromStream(taskSnapshot.getStream()).load();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(Pantalla1.this, "Fail :"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
