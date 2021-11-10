@@ -46,9 +46,9 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
-    StorageReference mmFirebaseStorageRef;
+    StorageReference storageReference;
     FirebaseApp app;
-    FirebaseStorage mFirebaseStorage;
+    FirebaseStorage storage;
     PDFView pdfView;
     ListView list;
     DatabaseReference databaseReference;
@@ -61,8 +61,26 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         auth = FirebaseAuth.getInstance();
         pdfView = findViewById(R.id.pdfPrincipal);
         list=findViewById(R.id.listView);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        app = FirebaseApp.getInstance();
+        storage = FirebaseStorage.getInstance(app);
+        storageReference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");
 
+        storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+
+                pdfView.fromStream(taskSnapshot.getStream()).load();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(HomeActivity.this, "Fail :"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
