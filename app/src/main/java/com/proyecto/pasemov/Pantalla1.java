@@ -48,7 +48,7 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
         auth=FirebaseAuth.getInstance();
         binding = ActivityPantalla1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-       // setSupportActionBar(binding.appBarPantalla1.toolbar);
+        setSupportActionBar(binding.appBarPantalla1.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
