@@ -9,6 +9,11 @@
         android:id="@+id/pdfPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="7dp"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabPlus"
         android:layout_width="wrap_content"

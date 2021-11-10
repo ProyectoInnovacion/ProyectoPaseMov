@@ -24,12 +24,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.UUID;
 
 public class upload extends AppCompatActivity {
@@ -39,6 +41,9 @@ public class upload extends AppCompatActivity {
     FirebaseStorage storage;
     Uri pdfUri;
     FirebaseAuth auth;
+
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,8 @@ public class upload extends AppCompatActivity {
         pdfUpload = findViewById(R.id.pdfViewUpload);
         storage = FirebaseStorage.getInstance();
         auth= FirebaseAuth.getInstance();
+        storageReference=FirebaseStorage.getInstance().getReference();
+        databaseReference= FirebaseDatabase.getInstance().getReference("uploadPDF");
         clickUpload.setOnClickListener(v ->
                 mGetContent.launch("application/pdf")
         );
@@ -67,23 +74,27 @@ public class upload extends AppCompatActivity {
             clickUpload.setText("Presione aca para seleccionar su archivo");
             pdfUpload.setVisibility(View.GONE);
         });
-    }
 
+
+
+    }
     private void uploadPDF() {
         final ProgressDialog progressDialog =new ProgressDialog(this);
         progressDialog.setTitle("Archivo cargando");
         progressDialog.show();
         if (pdfUri != null) {
-            StorageReference reference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()/*esto hay que cambiar para login id*/);
+            StorageReference reference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");
             reference.putFile(pdfUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
+                        putPDF putPDF=new putPDF(auth.getCurrentUser().getUid(),pdfUri.toString());
+                        databaseReference.child((databaseReference.push().getKey())).setValue(putPDF);
                         Toast.makeText(upload.this, "Pase subido exitosamente!", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        clickUpload.setText("Presione aca para seleccionar su archivo");
                         Intent intent = new Intent(upload.this, HomeActivity.class);
                         startActivity(intent);
-                    } else {
-                        Toast.makeText(upload.this, "Error al subir archivo", Toast.LENGTH_SHORT).show();
                     }
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -95,7 +106,6 @@ public class upload extends AppCompatActivity {
             });
         }
     }
-
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
             new ActivityResultCallback<Uri>() {
                 @Override
