@@ -45,10 +45,10 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         binding = ActivityPantalla1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-       // setSupportActionBar(binding.appBarPantalla1.toolbar);
+        setSupportActionBar(binding.appBarPantalla1.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
@@ -80,21 +80,23 @@ public class Pantalla1 extends AppCompatActivity implements PopupMenu.OnMenuItem
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.item1:
-                Intent intent = new Intent(this,upload.class);
+                Intent intent = new Intent(this, upload.class);
                 startActivity(intent);
-            return true;
+                return true;
             case R.id.item2:
                 auth.signOut();
-                startActivity(new Intent(Pantalla1.this,MainActivity.class));
+                startActivity(new Intent(Pantalla1.this, MainActivity.class));
                 finish();
                 return true;
-            default: return false;
+            default:
+                return false;
         }
     }
-    public void showPopup(View v){
-        PopupMenu popup = new PopupMenu(this,v);
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.popup_menu);
         popup.show();

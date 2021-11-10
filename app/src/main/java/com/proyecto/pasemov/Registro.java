@@ -28,7 +28,6 @@ public class Registro extends AppCompatActivity {
     EditText nombre, apellido, correo, pass1, pass2;
     Button btn;
     TextView devolver;
-    FloatingActionButton google;
     FirebaseAuth auth;
 
     @Override
@@ -43,7 +42,6 @@ public class Registro extends AppCompatActivity {
         pass2 = findViewById(R.id.contrasena2);
         btn = findViewById(R.id.btnRegistrase);
         devolver = findViewById(R.id.txtDevolverse);
-        google = findViewById(R.id.fabGoogleRegistrarse);
 
         auth = FirebaseAuth.getInstance();
 
@@ -86,11 +84,7 @@ public class Registro extends AppCompatActivity {
                 });
             }
         });
-
-
     }
-
-
 
 
     @Override
