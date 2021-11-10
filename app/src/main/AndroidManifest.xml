@@ -14,16 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaseMov">
         <activity
+            android:name=".apuntes"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".Registro"
             android:exported="true" />
         <activity
             android:name=".upload"
             android:exported="true" />
-        <activity
-            android:name=".Pantalla1"
-            android:exported="true"
-            android:label="@string/title_activity_pantalla1"
-            android:theme="@style/Theme.PaseMov.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

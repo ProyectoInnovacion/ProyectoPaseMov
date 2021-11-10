@@ -80,7 +80,7 @@ public class upload extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(upload.this, "Pase subido exitosamente!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(upload.this, Pantalla1.class);
+                        Intent intent = new Intent(upload.this, HomeActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(upload.this, "Error al subir archivo", Toast.LENGTH_SHORT).show();
