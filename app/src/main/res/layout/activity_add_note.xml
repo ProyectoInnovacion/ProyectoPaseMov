@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Titulo notas"
+            android:id="@+id/tituloNotas"
             android:background="#3000B0FF"
             android:textSize="30sp"
             android:padding="10dp"
@@ -66,6 +67,7 @@
     android:layout_gravity="center"
     android:backgroundTint="@color/white"
     android:textColor="#00B0FF"
+    android:id="@+id/btnGuardarNotas"
     android:text="Guardar nota"/>
 
 </LinearLayout>

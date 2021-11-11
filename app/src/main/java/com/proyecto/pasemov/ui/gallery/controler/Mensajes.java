@@ -59,7 +59,7 @@ public class Mensajes extends Fragment {
         addNoteBn.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddNoteActivity.class));
+                startActivity(new Intent(Mensajes.this, AddNoteActivity.class));
 
             }
         });
