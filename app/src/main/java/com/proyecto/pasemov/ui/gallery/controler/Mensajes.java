@@ -1,5 +1,6 @@
 package com.proyecto.pasemov.ui.gallery.controler;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.button.MaterialButton;
+import com.proyecto.pasemov.MainActivity;
 import com.proyecto.pasemov.R;
 
 /**
@@ -25,7 +28,7 @@ public class Mensajes extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    MaterialButton addNoteBn;
     public Mensajes() {
         // Required empty public constructor
     }
@@ -44,6 +47,7 @@ public class Mensajes extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,10 +55,20 @@ public class Mensajes extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addNoteBn.findViewById(R.id.addnewnotebtn);
+        addNoteBn.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AddNoteActivity.class));
+
+            }
+        });
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override

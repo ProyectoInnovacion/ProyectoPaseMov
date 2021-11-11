@@ -9,7 +9,7 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.proyecto.pasemov.ui.gallery.controler.PagerController;
 
-public class apuntes extends AppCompatActivity {
+public class    apuntes extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tab1, tab2, tab3;

@@ -4,42 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.gallery.controler.Mensajes">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="pr"
+        />
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/notes"
+       android:text="Notas"
+       android:textSize="20dp"
+       android:textColor="@color/black"
+       android:textStyle="bold"
+       />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity"
-        >
-
-
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Titulo notas"
-            android:textSize="30sp"
-
-            />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/linea_horizontal"
-            android:backgroundTint="@color/transparante"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:backgroundTint="#e4e4e4"
-            android:hint="Escribir notas"
-            android:textAlignment="viewStart"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
-
-
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="60dp"
+        />
+<com.google.android.material.button.MaterialButton
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:text="nueva nota"
+    android:layout_marginLeft="160dp"
+    android:id="@+id/addnewnotebtn"
+    android:textColor="@color/black"
+    android:backgroundTint="@color/transparante"
+    android:layout_marginTop="670dp"
+    />
 </FrameLayout>
