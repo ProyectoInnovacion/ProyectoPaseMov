@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,10 +60,24 @@ public class Mensajes extends Fragment {
         addNoteBn.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Notes.this, AddNoteActivity.class));
+                startActivity(new Intent(Mensajes.this, AddNoteActivity.class));
 
             }
         });
+        Realm.init(getApplicationContext());
+        Realm realm=Realm.getDefaulInstance();
+        RealmResults<Notes> notesList = realm.where(Notes.class).findAll();
+        ReacyclerView reacyclerView=findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter myAdapter= new MyAdapter(getApplicationContext(),notesList);
+        recyclerView.setAdapter(myAdapter);
+
+        notesList.addChangeListener( new RealmChangeListener<RealmResults<Notes>>){
+            @Override
+                    public  void onChange(RealmResults<Notes> notes){
+                myAdapter.notifyDataSetChanged();
+            }
+        }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
