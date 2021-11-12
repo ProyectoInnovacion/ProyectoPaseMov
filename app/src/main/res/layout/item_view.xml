@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulopu"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:text="My titulo"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/descripcionpu"
+        android:textSize="20dp"
+        android:layout_below="@+id/titulopu"
+        android:textColor="#393939"
+        android:text="My Descripcion"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeoutput"
+        android:textSize="12dp"
+        android:layout_below="@+id/descripcionpu"
+        android:textColor="#858484"
+        android:gravity="end"
+        android:text="jan 21 2020"
+        />
+
+</RelativeLayout>
