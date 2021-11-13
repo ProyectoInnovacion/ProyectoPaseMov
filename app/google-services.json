@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "259691758095-ubgtbqqjp3kn32naofndd5tkit896oer.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyecto.pasemov",
+            "certificate_hash": "7b2b35701b5ad33156a7b2b494d1eb6b843a4c2e"
+          }
+        },
+        {
           "client_id": "259691758095-a80jddjig73vc7hv813dn3s911kdaqg3.apps.googleusercontent.com",
           "client_type": 3
         }

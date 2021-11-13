@@ -1,17 +1,21 @@
 package com.proyecto.pasemov.ui.gallery.controler;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PagerController extends FragmentPagerAdapter {
+    int numftabs;
+
     public PagerController(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
         this.numftabs = behavior;
     }
 
-    int numftabs;
+
 
     @NonNull
     @Override

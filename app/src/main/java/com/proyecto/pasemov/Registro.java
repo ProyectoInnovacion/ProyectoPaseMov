@@ -44,7 +44,10 @@ public class Registro extends AppCompatActivity {
         devolver = findViewById(R.id.txtDevolverse);
 
         auth = FirebaseAuth.getInstance();
-
+        devolver.setOnClickListener(v -> {
+            Intent intent6 = new Intent(this, MainActivity.class);
+            startActivity(intent6);
+        });
         btn.setOnClickListener(v -> {
             String emailID, pass11, pass22, usuarioNombre, usuarioApellido;
             usuarioNombre = nombre.getText().toString();

@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Titulo notas"
-            android:id="@+id/tituloNotas"
+            android:id="@+id/tituloInput"
             android:background="#3000B0FF"
             android:textSize="30sp"
             android:padding="10dp"
@@ -48,7 +48,7 @@
             android:backgroundTint="@color/transparante"
             />
         <EditText
-            android:id="@+id/descripcionput"
+            android:id="@+id/descripcionInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"

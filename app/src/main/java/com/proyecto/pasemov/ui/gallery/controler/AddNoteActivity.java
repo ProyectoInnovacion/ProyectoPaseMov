@@ -10,32 +10,34 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.proyecto.pasemov.R;
 
-public class AddNoteActivity extends AppCompatActivity {
+import io.realm.Realm;
 
+public class AddNoteActivity extends AppCompatActivity {
+Realm realm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
-        EditText TitleInput=findViewById(R.id.tituloNotas);
-        EditText descripcioninput=findViewById(R.id.descripcionput);
+        EditText TitleInput=findViewById(R.id.tituloInput);
+        EditText descripcionInput=findViewById(R.id.descripcionInput);
         MaterialButton saveBtn=findViewById(R.id.btnGuardarNotas);
-        Realm.init(getApplication());
-        Realm realm=Realm.getDefualtInstance();
+        Realm.init(getApplicationContext());
+        realm= Realm.getDefaultInstance();
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String title= TitleInput.getText().toString();
-                String descripcion= descripcioninput.getText().toString();
+                String descripcion= descripcionInput.getText().toString();
                 long createdTime= System.currentTimeMillis();
 
                 realm.beginTransaction();
-                Mensajes note= realm.createObject(Mensajes.class);
+                Notes note= realm.createObject(Notes.class); //Mensajes.this , tenias Mensajes en vez de Notes tambien
                 note.setTitle(title);
                 note.setDescription(descripcion);
                 note.setCreatedTime(createdTime);
                 realm.commitTransaction();
-                Toast.makeText(getApplication(),"guardado la nota",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(),"nota guardada",Toast.LENGTH_LONG).show();
             finish();
             }
         });

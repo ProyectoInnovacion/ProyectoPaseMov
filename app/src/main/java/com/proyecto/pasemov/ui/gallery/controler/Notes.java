@@ -1,7 +1,9 @@
 package com.proyecto.pasemov.ui.gallery.controler;
 
-public class Notes extends RealmObject{
-    String title, descriptionn;
+import io.realm.RealmObject;
+
+public class Notes extends RealmObject {
+    String title, description;
     long createdTime;
 
 
@@ -13,12 +15,12 @@ public class Notes extends RealmObject{
         this.title = title;
     }
 
-    public String getDescriptionn() {
-        return descriptionn;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptionn(String descriptionn) {
-        this.descriptionn = descriptionn;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public long getCreatedTime() {

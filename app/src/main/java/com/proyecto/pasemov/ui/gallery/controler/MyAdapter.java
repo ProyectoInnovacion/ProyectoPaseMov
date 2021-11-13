@@ -16,9 +16,13 @@ import com.proyecto.pasemov.R;
 
 import java.text.DateFormat;
 
-public class MyAdapter  extends RecyclerView.Adapter {
+import io.realm.Realm;
+import io.realm.RealmResults;
+
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Context context;
     RealmResults<Notes> notesList;
+    Realm realm;
 
     public MyAdapter(Context context, RealmResults<Notes> notesList) {
         this.context = context;
@@ -27,39 +31,39 @@ public class MyAdapter  extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view,parent,false));
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-    Notes note =notesList.get(position);
-    holder.titleOutput.setText(note.getTitle());
-        holder.descriptionOutput.setText(note.getTitle());
-        String formatedTime= DateFormat.getDateTimeInstance().format(note.createdTime);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.timeOutput.setText(note.getTitle(formatedTime));
-        holder.itemView.setOnClickListener(new View.OnLongClickListener(){
+        Notes note = notesList.get(position);
+        holder.titleOutput.setText(note.getTitle());
+        holder.descriptionOutput.setText(note.getDescription());
+        String formatedTime = DateFormat.getDateTimeInstance().format(note.createdTime);
+
+        holder.timeOutput.setText(formatedTime);//note.getTitle(formatedTime)
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PopupMenu menu=   new PopupMenu(context,v);
+                PopupMenu menu = new PopupMenu(context, v);
                 menu.getMenu().add("Eliminar");
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getTitle().equals("Eliminar"))
-                            Realm realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
-                        note.deleteFromRealm();
-                        realm.commitTransaction();
-                        Toast.makeText(context,"eliminacion de nota",Toast.LENGTH_SHORT).show();
-
+                        if (item.getTitle().equals("Eliminar")) {
+                            realm = Realm.getDefaultInstance();
+                            realm.beginTransaction();
+                            note.deleteFromRealm();
+                            realm.commitTransaction();
+                            Toast.makeText(context, "eliminacion de nota", Toast.LENGTH_SHORT).show();
+                        }
                         return true;
                     }
                 });
                 menu.show();
-
-                return  true;
+                return true;
             }
         });
     }
@@ -69,14 +73,15 @@ public class MyAdapter  extends RecyclerView.Adapter {
         return notesList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView titleOutput, descriptionOunput, timeOutput;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView titleOutput, descriptionOutput, timeOutput;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            timeOutput= itemView.findViewById(R.id.titloutput);
-            descriptionOunput= itemView.findViewById(R.id.descriptionoutput);
-            timeOutput=itemView.findViewById((R.id.timeoutpu));
+            titleOutput = itemView.findViewById(R.id.tituloOutput); //decia timeOutput en vez de title
+            descriptionOutput = itemView.findViewById(R.id.descripcionOutput);
+            timeOutput = itemView.findViewById((R.id.timeOutput));
         }
     }
+
 }

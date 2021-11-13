@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton google;
     FirebaseAuth auth;
     TextView txtRegistrar;
-
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -62,18 +61,17 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         google = findViewById(R.id.fabGoogleLogin);
         btnLogin = findViewById(R.id.btnLogin);
-
         txtRegistrar = findViewById(R.id.txtRegistrar);
-
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
         txtRegistrar.setOnClickListener(v -> {
             Intent intent = new Intent(this, Registro.class);
             startActivity(intent);
         });
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+
 
 
         btnLogin.setOnClickListener(v -> {

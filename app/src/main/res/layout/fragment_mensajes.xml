@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.gallery.controler.Mensajes">
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="pr"
+        android:background="@color/teal_700"
         />
 
-    <!-- TODO: Update blank fragment layout -->
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -23,19 +22,19 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:layout_below="@id/notes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="60dp"
+        android:layout_margin="15dp"
         />
-<com.google.android.material.button.MaterialButton
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:text="nueva nota"
-    android:layout_marginLeft="160dp"
-    android:id="@+id/addnewnotebtn"
-    android:textColor="@color/black"
-    android:backgroundTint="@color/transparante"
-    android:layout_marginTop="670dp"
-    />
-</FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addnewnotebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/transparante"
+        android:onClick="onClick"
+        android:text="nueva nota"
+        android:textColor="@color/black" />
+</RelativeLayout>
