@@ -3,29 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.controler.Mensajes">
-    <ImageView
+    tools:context=".Mensajes"
+    android:padding="10dp"
+    android:background="@color/teal_700">
+    <LinearLayout
+        android:id="@+id/llnotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/teal_700"
-        />
-
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/cont_iconos"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_baseline_email_24"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_baseline_message_24"/>
+    </LinearLayout>
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:id="@+id/notes"
+       android:id="@+id/notes2"
        android:text="Notas"
        android:textSize="20dp"
        android:textColor="@color/black"
        android:textStyle="bold"
+       android:layout_below="@id/llnotes"
        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_below="@id/notes"
+        android:layout_below="@id/notes2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -34,7 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/transparante"
-        android:onClick="onClick"
         android:text="nueva nota"
         android:textColor="@color/black" />
 </RelativeLayout>

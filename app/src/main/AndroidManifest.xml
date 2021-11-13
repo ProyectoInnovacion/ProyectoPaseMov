@@ -14,10 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaseMov">
         <activity
-            android:name=".ui.gallery.controler.AddNoteActivity"
-            android:exported="true" />
-        <activity
-            android:name=".apuntes"
+            android:name=".AddNoteActivity"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
@@ -27,6 +24,9 @@
             android:exported="true" />
         <activity
             android:name=".upload"
+            android:exported="true" />
+        <activity
+            android:name=".Mensajes"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

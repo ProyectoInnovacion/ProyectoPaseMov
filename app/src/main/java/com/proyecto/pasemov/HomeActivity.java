@@ -90,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivity(intent);
                 return true;
             case R.id.item2:
-                Intent intent2 = new Intent(this,apuntes.class);
+                Intent intent2 = new Intent(this,Mensajes.class);
                 startActivity(intent2);
                 return true;
             case R.id.item3:

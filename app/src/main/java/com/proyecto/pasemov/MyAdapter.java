@@ -1,4 +1,4 @@
-package com.proyecto.pasemov.ui.gallery.controler;
+package com.proyecto.pasemov;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.proyecto.pasemov.R;
 
 import java.text.DateFormat;
 

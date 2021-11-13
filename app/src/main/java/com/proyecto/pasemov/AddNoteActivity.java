@@ -1,4 +1,4 @@
-package com.proyecto.pasemov.ui.gallery.controler;
+package com.proyecto.pasemov;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
-import com.proyecto.pasemov.R;
 
 import io.realm.Realm;
 

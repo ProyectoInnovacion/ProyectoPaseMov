@@ -1,4 +1,4 @@
-package com.proyecto.pasemov.ui.gallery.controler;
+package com.proyecto.pasemov;
 
 import io.realm.RealmObject;
 
