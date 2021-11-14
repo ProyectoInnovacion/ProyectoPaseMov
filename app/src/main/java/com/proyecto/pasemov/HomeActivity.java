@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     PDFView pdfView;
     ListView list;
     DatabaseReference databaseReference;
-
+    int cont=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +64,21 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         storageReference = FirebaseStorage.getInstance().getReference();
         app = FirebaseApp.getInstance();
         storage = FirebaseStorage.getInstance(app);
-        storageReference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");
+        storageReference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");//
 
-        storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+            storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+                    pdfView.fromStream(taskSnapshot.getStream()).load();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(HomeActivity.this, "Fail :"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
-                pdfView.fromStream(taskSnapshot.getStream()).load();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(HomeActivity.this, "Fail :"+e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
 
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mensajes"
+    tools:context=".Medicinas"
     android:padding="10dp"
     android:background="@color/teal_700">
     <LinearLayout
@@ -32,30 +32,30 @@
 
             android:background="@drawable/ic_pills_svgrepo_com"/>
     </LinearLayout>
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/notes2"
-       android:text="Contactos"
-       android:textSize="20dp"
-       android:textColor="@color/black"
-       android:textStyle="bold"
-       android:layout_below="@id/llnotes"
-       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes2"
+        android:text="Medicamentos"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_below="@id/llnotes"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerview3"
         android:layout_below="@id/notes2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addnewnotebtn"
+        android:id="@+id/addnewnotebtn3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/transparante"
-        android:text="nuevo contacto"
+        android:text="Nuevo medicamento"
         android:textColor="@color/black" />
 </RelativeLayout>

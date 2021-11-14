@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaseMov">
         <activity
+            android:name=".Medicinas"
+            android:exported="true" />
+        <activity
+            android:name=".Alergias"
+            android:exported="true" />
+        <activity
             android:name=".AddNoteActivity"
             android:exported="true" />
         <activity

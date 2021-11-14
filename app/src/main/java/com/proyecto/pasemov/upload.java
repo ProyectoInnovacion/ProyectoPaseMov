@@ -34,6 +34,7 @@ public class upload extends AppCompatActivity {
     FirebaseStorage storage;
     Uri pdfUri;
     FirebaseAuth auth;
+    int cont=1;
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -51,7 +52,7 @@ public class upload extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         auth= FirebaseAuth.getInstance();
         storageReference=FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploadPDF");
+        databaseReference= FirebaseDatabase.getInstance().getReference(auth.getUid()+"PDF");
         clickUpload.setOnClickListener(v ->
                 mGetContent.launch("application/pdf")
         );
@@ -76,12 +77,13 @@ public class upload extends AppCompatActivity {
         progressDialog.setTitle("Archivo cargando");
         progressDialog.show();
         if (pdfUri != null) {
-            StorageReference reference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");
+            StorageReference reference = storage.getReference().child("pdf/pase"+cont+".pdf");
+            cont++;
             reference.putFile(pdfUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
-                        putPDF putPDF=new putPDF(auth.getCurrentUser().getUid(),pdfUri.toString());
+                        putPDF putPDF=new putPDF(auth.getCurrentUser().getUid()+"test",pdfUri.toString());
                         databaseReference.child((databaseReference.push().getKey())).setValue(putPDF);
                         Toast.makeText(upload.this, "Pase subido exitosamente!", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();

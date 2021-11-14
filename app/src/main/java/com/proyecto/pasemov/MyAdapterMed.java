@@ -17,37 +17,37 @@ import java.text.DateFormat;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+public class MyAdapterMed extends RecyclerView.Adapter<MyAdapterMed.MyViewHolderMed> {
+
     Context context;
     RealmResults<Notes> notesList;
     Realm realm;
 
-    public MyAdapter(Context context, RealmResults<Notes> notesList) {
+    public MyAdapterMed(Context context, RealmResults<Notes> notesList) {
         this.context = context;
         this.notesList = notesList;
     }
-
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
+    public MyViewHolderMed onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyViewHolderMed(LayoutInflater.from(context).inflate(R.layout.item_view2, parent, false));
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyAdapterMed.MyViewHolderMed holder, int position) {
         Notes note = notesList.get(position);
-        holder.titleOutput.setText(note.getTitle());
-        holder.descriptionOutput.setText(note.getDescription());
+        holder.titleOutput2.setText(note.getTitle());
+        holder.descriptionOutput2.setText(note.getDescription());
         String formatedTime = DateFormat.getDateTimeInstance().format(note.createdTime);
 
-        holder.timeOutput.setText(formatedTime);
+        holder.timeOutput2.setText(formatedTime);//note.getTitle(formatedTime)
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PopupMenu menu = new PopupMenu(context, v);
-                menu.getMenu().add("Eliminar");
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                PopupMenu menu2 = new PopupMenu(context, v);
+                menu2.getMenu().add("Eliminar");
+                menu2.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getTitle().equals("Eliminar")) {
@@ -60,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                         return true;
                     }
                 });
-                menu.show();
+                menu2.show();
                 return true;
             }
         });
@@ -71,15 +71,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return notesList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView titleOutput, descriptionOutput, timeOutput;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleOutput = itemView.findViewById(R.id.tituloOutput); //decia timeOutput en vez de title
-            descriptionOutput = itemView.findViewById(R.id.descripcionOutput);
-            timeOutput = itemView.findViewById((R.id.timeOutput));
+    public class MyViewHolderMed extends RecyclerView.ViewHolder {
+        TextView titleOutput2, descriptionOutput2, timeOutput2;
+        public MyViewHolderMed(@NonNull View itemView2) {
+            super(itemView2);
+            titleOutput2 = itemView2.findViewById(R.id.tituloOutput2);
+            descriptionOutput2 = itemView2.findViewById(R.id.descripcionOutput2);
+            timeOutput2 = itemView2.findViewById(R.id.timeOutput2);
         }
     }
-
 }
