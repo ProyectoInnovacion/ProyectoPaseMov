@@ -38,19 +38,19 @@ ImageButton contacto,alergia,medicina;
         medicina=findViewById(R.id.medicina);
         addNoteBn= findViewById(R.id.addnewnotebtn);
         addNoteBn.setOnClickListener(v ->
-                startActivity(new Intent(Mensajes.this,AddNoteActivity.class))
+               startActivity(new Intent(Mensajes.this,AddNoteActivity.class))
         );
         contacto.setOnClickListener(v -> {
-            finish();
-            startActivity(getIntent());
+           // finish();
+           // startActivity(getIntent());
         });
         alergia.setOnClickListener(v -> {
-            startActivity(new Intent(Mensajes.this,Alergias.class));
-            finish();
+          //  startActivity(new Intent(Mensajes.this,Alergias.class));
+           // finish();
         });
         medicina.setOnClickListener(v -> {
-            startActivity(new Intent(Mensajes.this, Medicinas.class));
-            finish();
+           // startActivity(new Intent(Mensajes.this, Medicinas.class));
+           // finish();
         });
 
         Realm.init(getApplicationContext());

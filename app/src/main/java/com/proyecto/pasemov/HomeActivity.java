@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         storageReference = FirebaseStorage.getInstance().getReference();
         app = FirebaseApp.getInstance();
         storage = FirebaseStorage.getInstance(app);
-        storageReference = storage.getReference().child("pdf/pase"+auth.getCurrentUser().getUid()+".pdf");//
+        storageReference = storage.getReference().child("pdf/"+auth.getCurrentUser().getUid()+"/pase.pdf");//
 
             storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
                 @Override
