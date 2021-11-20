@@ -27,7 +27,7 @@ public class Mensajes extends AppCompatActivity {
 
 MaterialButton addNoteBn;
 RecyclerView recyclerView;
-ImageButton contacto,alergia,medicina;
+ImageButton contacto,alergia,medicina,goback2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,10 @@ ImageButton contacto,alergia,medicina;
         alergia=findViewById(R.id.alergias);
         medicina=findViewById(R.id.medicina);
         addNoteBn= findViewById(R.id.addnewnotebtn);
+        goback2=findViewById(R.id.goBack2);
+        goback2.setOnClickListener(v -> {
+            startActivity(new Intent(this,HomeActivity.class));
+        });
         addNoteBn.setOnClickListener(v ->
                startActivity(new Intent(Mensajes.this,AddNoteActivity.class))
         );

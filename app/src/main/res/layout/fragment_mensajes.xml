@@ -3,59 +3,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mensajes"
+    android:background="#F7770F"
     android:padding="10dp"
-    android:background="@color/teal_700">
+    tools:context=".Mensajes">
+
     <LinearLayout
         android:id="@+id/llnotes"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_cornerblack">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_cornerpurple"
+        android:gravity="center">
+    <LinearLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/ic_blob_haikei3"
+        android:layout_marginEnd="25dp"
+        android:orientation="vertical">
         <ImageButton
             android:id="@+id/contactos"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/cont_iconos" />
+    </LinearLayout>
+        <LinearLayout
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/cont_iconos"/>
+            android:background="@drawable/ic_blob_haikei1"
+            android:layout_marginEnd="25dp"
+            android:orientation="vertical">
         <ImageButton
             android:id="@+id/alergias"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_sickness_svgrepo_com" />
+    </LinearLayout>
+        <LinearLayout
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_sickness_svgrepo_com"/>
+            android:background="@drawable/ic_blob_haikei2"
+            android:orientation="vertical">
         <ImageButton
             android:id="@+id/medicina"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-
-            android:background="@drawable/ic_pills_svgrepo_com"/>
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_pills_svgrepo_com" />
+        </LinearLayout>
     </LinearLayout>
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/notes2"
-       android:text="Contactos"
-       android:textSize="20dp"
-       android:textColor="@color/black"
-       android:textStyle="bold"
-       android:layout_below="@id/llnotes"
-       />
+
+    <TextView
+        android:id="@+id/notes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llnotes"
+        android:text="Apuntes"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_below="@id/notes2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_below="@id/notes2" />
+
+    <ImageButton
+        android:id="@+id/goBack2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/addnewnotebtn"
+        android:layout_alignEnd="@id/addnewnotebtn"
+        android:layout_margin="15dp"
+        android:background="@drawable/goback" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addnewnotebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/transparante"
-        android:text="nuevo contacto"
-        android:textColor="@color/black" />
+        android:backgroundTint="#C62368"
+        android:text="nuevo apunte"
+        android:textColor="@color/white" />
 </RelativeLayout>

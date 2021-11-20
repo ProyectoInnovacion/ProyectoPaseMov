@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class HomeActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
@@ -50,9 +51,8 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     FirebaseApp app;
     FirebaseStorage storage;
     PDFView pdfView;
-    ListView list;
     DatabaseReference databaseReference;
-    int cont=1;
+    ImageButton upload, notepad, exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,53 +60,38 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(R.layout.activity_home);
         auth = FirebaseAuth.getInstance();
         pdfView = findViewById(R.id.pdfPrincipal);
-        list=findViewById(R.id.listView);
         storageReference = FirebaseStorage.getInstance().getReference();
         app = FirebaseApp.getInstance();
         storage = FirebaseStorage.getInstance(app);
-        storageReference = storage.getReference().child("pdf/"+auth.getCurrentUser().getUid()+"/pase.pdf");//
+        upload = findViewById(R.id.upload);
+        notepad = findViewById(R.id.notepad);
+        exit = findViewById(R.id.exit);
+        storageReference = storage.getReference().child("pdf/" + auth.getCurrentUser().getUid() + "/pase.pdf");//
 
-            storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
-                    pdfView.fromStream(taskSnapshot.getStream()).load();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(HomeActivity.this, "Fail :"+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+                pdfView.fromStream(taskSnapshot.getStream()).load();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(HomeActivity.this, "Error: No se encontro PDF.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-
-
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Intent intent = new Intent(this, upload.class);
-                startActivity(intent);
-                return true;
-            case R.id.item2:
-                Intent intent2 = new Intent(this,Mensajes.class);
-                startActivity(intent2);
-                return true;
-            case R.id.item3:
-                auth.signOut();
-                startActivity(new Intent(HomeActivity.this, MainActivity.class));
-                finish();
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    public void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_menu);
-        popup.show();
+        upload.setOnClickListener(v -> {
+            Intent intent = new Intent(this, upload.class);
+            startActivity(intent);
+        });
+        notepad.setOnClickListener(v -> {
+            Intent intent2 = new Intent(this, Mensajes.class);
+            startActivity(intent2);
+        });
+        exit.setOnClickListener(v -> {
+            auth.signOut();
+            startActivity(new Intent(HomeActivity.this, MainActivity.class));
+            finish();
+        });
     }
 }

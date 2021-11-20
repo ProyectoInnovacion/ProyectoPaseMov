@@ -28,77 +28,25 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 public class MainActivity extends AppCompatActivity {
-    EditText correo, pass;
-    Button btnLogin;
-    FloatingActionButton google;
+    GoogleSignInButton google;
     FirebaseAuth auth;
-    TextView txtRegistrar;
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*        Entrada1= findViewById(R.id.btnRegular);
-      Entrada2= findViewById(R.id.btnVisibilidad);
-        Entrada1.setOnClickListener(v ->
-        {
-            Intent intent1 = new Intent(this, Pantalla1.class);
-            ModoAccesibilidad =false;
-            intent1.putExtra("Modo",ModoAccesibilidad);
-            startActivity(intent1);
-        } );
-        Entrada2.setOnClickListener(view -> {
-            Intent intent2 = new Intent(this, Pantalla1.class);
-            ModoAccesibilidad=true;
-            intent2.putExtra("Modo",ModoAccesibilidad);
-            startActivity(intent2);
-        });*/
-        correo = findViewById(R.id.editTxtLoginUser);
-        pass = findViewById(R.id.editTxtLoginPass);
+
         auth = FirebaseAuth.getInstance();
-        google = findViewById(R.id.fabGoogleLogin);
-        btnLogin = findViewById(R.id.btnLogin);
-        txtRegistrar = findViewById(R.id.txtRegistrar);
+        google = findViewById(R.id.googleLogin);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        txtRegistrar.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Registro.class);
-            startActivity(intent);
-        });
 
-
-
-
-        btnLogin.setOnClickListener(v -> {
-            String userLogin, userPass;
-            userLogin = correo.getText().toString();
-            userPass = pass.getText().toString();
-
-            if (userLogin.isEmpty()) {
-                correo.setError("Ingrese su nombre por favor");
-                correo.requestFocus();
-            } else if (userPass.isEmpty()) {
-                pass.setError("Ingrese su apellido por favor");
-                pass.requestFocus();
-            } else {
-                auth.signInWithEmailAndPassword(userLogin, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                            finish();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         google.setOnClickListener(v -> {
@@ -106,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == Activity.RESULT_OK) {
                 Intent intent = result.getData();
-
 
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(intent);
                 try {

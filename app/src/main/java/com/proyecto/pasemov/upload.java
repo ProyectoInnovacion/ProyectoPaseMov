@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.github.barteksc.pdfviewer.PDFView;
@@ -34,7 +35,7 @@ public class upload extends AppCompatActivity {
     FirebaseStorage storage;
     Uri pdfUri;
     FirebaseAuth auth;
-    int cont=1;
+    ImageButton goback;
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -49,6 +50,7 @@ public class upload extends AppCompatActivity {
         btnD.setEnabled(false);
         clickUpload = findViewById(R.id.txtClick);
         pdfUpload = findViewById(R.id.pdfViewUpload);
+        goback = findViewById(R.id.goBack);
         storage = FirebaseStorage.getInstance();
         auth= FirebaseAuth.getInstance();
         storageReference=FirebaseStorage.getInstance().getReference();
@@ -62,13 +64,13 @@ public class upload extends AppCompatActivity {
         btnD.setOnClickListener(v -> {
             clickUpload.setVisibility(View.VISIBLE);
             btnU.setEnabled(false);
-            btnU.setVisibility(View.GONE);
             btnD.setEnabled(false);
-            btnD.setVisibility(View.GONE);
             clickUpload.setText("Presione aca para seleccionar su archivo");
-            pdfUpload.setVisibility(View.GONE);
+            pdfUpload.setVisibility(View.INVISIBLE);
         });
-
+        goback.setOnClickListener(v -> {
+            startActivity(new Intent(this,HomeActivity.class));
+        });
 
 
     }
@@ -90,6 +92,7 @@ public class upload extends AppCompatActivity {
                         clickUpload.setText("Presione aca para seleccionar su archivo");
                         Intent intent = new Intent(upload.this, HomeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
