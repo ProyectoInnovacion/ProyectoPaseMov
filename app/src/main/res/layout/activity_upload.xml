@@ -25,39 +25,47 @@
 
         </com.github.barteksc.pdfviewer.PDFView>
 
-        <TextView
+        <ImageButton
             android:id="@+id/txtClick"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="@drawable/rounded_cornerblack"
-            android:gravity="center"
-            android:lines="2"
-            android:text="Presione aca para seleccionar su archivo"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:background="@drawable/blobboton"
+            android:gravity="center" />
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subir Pase"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/linearl"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RL1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RL1"
+        android:gravity="center"
+        >
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible"
-        android:text="Eliminar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnUpload" />
+        <ImageButton
+            android:id="@+id/btnUpload"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/subirpase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RL1"
+            android:layout_marginEnd="30dp"
+            android:visibility="invisible"/>
+
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/borrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnUpload"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/goBack"
@@ -67,7 +75,7 @@
         android:background="@drawable/goback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnDelete" />
+        app:layout_constraintTop_toBottomOf="@id/linearl" />
     <!--    <View-->
     <!--        android:id="@+id/view3"-->
     <!--        android:layout_width="match_parent"-->

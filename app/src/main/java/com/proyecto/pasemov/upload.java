@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -29,8 +30,8 @@ import com.google.firebase.storage.UploadTask;
 
 
 public class upload extends AppCompatActivity {
-    Button btnU, btnD;
-    TextView clickUpload;
+
+    ImageButton clickUpload,btnU,btnD;
     PDFView pdfUpload;
     FirebaseStorage storage;
     Uri pdfUri;
@@ -65,7 +66,6 @@ public class upload extends AppCompatActivity {
             clickUpload.setVisibility(View.VISIBLE);
             btnU.setEnabled(false);
             btnD.setEnabled(false);
-            clickUpload.setText("Presione aca para seleccionar su archivo");
             pdfUpload.setVisibility(View.INVISIBLE);
         });
         goback.setOnClickListener(v -> {
@@ -89,7 +89,6 @@ public class upload extends AppCompatActivity {
                         databaseReference.child((databaseReference.push().getKey())).setValue(putPDF);
                         Toast.makeText(upload.this, "Pase subido exitosamente!", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
-                        clickUpload.setText("Presione aca para seleccionar su archivo");
                         Intent intent = new Intent(upload.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
