@@ -26,6 +26,11 @@
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/drawable/rounded_cornerpurple.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/drawable/side_nav_bar.xml" value="0.37222222222222223" />
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/drawable/textbox.xml" value="0.240625" />
+        <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout-land/activity_add_note.xml" value="0.19395796847635727" />
+        <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout-land/activity_home.xml" value="0.19395796847635727" />
+        <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout-land/activity_upload.xml" value="0.19395796847635727" />
+        <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout-sw600dp/activity_add_note.xml" value="0.173046875" />
+        <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout-sw600dp/activity_upload.xml" value="0.173046875" />
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout/activity_add_note.xml" value="0.259375" />
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout/activity_alergias.xml" value="0.39791666666666664" />
         <entry key="..\:/Users/seba/AndroidStudioProjects/PaseMov/app/src/main/res/layout/activity_apuntes.xml" value="0.39375" />

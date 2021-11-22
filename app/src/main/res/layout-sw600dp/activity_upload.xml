@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".upload"
+    android:background="#F7770F">
+
+    <RelativeLayout
+        android:id="@+id/RL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfViewUpload"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:background="@drawable/ic_layered_waves_haikeitop">
+
+        </com.github.barteksc.pdfviewer.PDFView>
+
+        <ImageButton
+            android:id="@+id/txtClick"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/blobboton"
+            android:gravity="center" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RL1"
+        android:gravity="center"
+        >
+
+        <ImageButton
+            android:id="@+id/btnUpload"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/subirpase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RL1"
+            android:layout_marginEnd="30dp"
+            android:visibility="invisible"/>
+
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/borrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnUpload"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/goBack"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/goback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearl" />
+    <!--    <View-->
+    <!--        android:id="@+id/view3"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/btnUpload"-->
+    <!--        android:background="@drawable/ic_layered_waves_haikei"-->
+    <!--        />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

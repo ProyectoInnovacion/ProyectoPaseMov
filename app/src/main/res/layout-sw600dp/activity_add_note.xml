@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNoteActivity"
+    android:orientation="vertical"
+    android:background="@drawable/ic_layered_waves_haikeitop"
+    android:padding="20dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textoView"
+        android:text="Nuevo Apunte"
+        android:textSize="50sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="20dp"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_comer"
+        android:padding="10dp"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titulo apunte"
+            android:id="@+id/tituloInput"
+            android:background="#3000B0FF"
+            android:textSize="60sp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/linea_horizontal"
+            android:backgroundTint="@color/transparante"
+            />
+        <EditText
+            android:id="@+id/descripcionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="#3000B0FF"
+            android:hint="Descripcion apunte"
+            android:textSize="45sp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:lines="10"
+            android:gravity="top"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            />
+</LinearLayout>
+<com.google.android.material.button.MaterialButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:backgroundTint="#C60369"
+    android:textColor="@color/white"
+    android:id="@+id/btnGuardarNotas"
+    android:textSize="50dp"
+    android:text="Guardar apunte"/>
+
+    <ImageButton
+        android:id="@+id/goBack2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="80dp"
+        android:background="@drawable/goback" />
+
+</LinearLayout>

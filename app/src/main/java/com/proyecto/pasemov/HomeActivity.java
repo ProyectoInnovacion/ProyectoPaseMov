@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -53,6 +55,7 @@ public class HomeActivity extends AppCompatActivity{
     PDFView pdfView;
     DatabaseReference databaseReference;
     ImageButton upload, notepad, exit;
+    LinearLayout llnotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,8 @@ public class HomeActivity extends AppCompatActivity{
         upload = findViewById(R.id.upload);
         notepad = findViewById(R.id.notepad);
         exit = findViewById(R.id.exit);
+        llnotes = findViewById(R.id.llnotes);
+
         storageReference = storage.getReference().child("pdf/" + auth.getCurrentUser().getUid() + "/pase.pdf");//
 
         storageReference.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
