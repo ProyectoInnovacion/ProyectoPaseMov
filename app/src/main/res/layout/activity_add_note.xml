@@ -37,6 +37,7 @@
             android:textSize="30sp"
             android:padding="10dp"
             android:layout_margin="10dp"
+            android:textColor="@color/black"
             />
         <ImageView
             android:layout_width="match_parent"
@@ -58,6 +59,7 @@
             android:textStyle="bold"
             android:lines="10"
             android:gravity="top"
+            android:textColor="@color/black"
             />
 </LinearLayout>
 <com.google.android.material.button.MaterialButton
