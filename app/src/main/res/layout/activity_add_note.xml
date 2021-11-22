@@ -38,6 +38,7 @@
             android:padding="10dp"
             android:layout_margin="10dp"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             />
         <ImageView
             android:layout_width="match_parent"
@@ -60,6 +61,7 @@
             android:lines="10"
             android:gravity="top"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             />
 </LinearLayout>
 <com.google.android.material.button.MaterialButton
