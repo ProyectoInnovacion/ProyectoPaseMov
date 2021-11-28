@@ -3,6 +3,7 @@ package com.proyecto.pasemov;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +47,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
@@ -56,6 +58,8 @@ public class HomeActivity extends AppCompatActivity{
     DatabaseReference databaseReference;
     ImageButton upload, notepad, exit;
     LinearLayout llnotes;
+    FloatingActionButton fabMain, fabUpload, fabExit, fabApuntes;
+    Boolean EstadoMenu = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +70,15 @@ public class HomeActivity extends AppCompatActivity{
         storageReference = FirebaseStorage.getInstance().getReference();
         app = FirebaseApp.getInstance();
         storage = FirebaseStorage.getInstance(app);
-        upload = findViewById(R.id.upload);
-        notepad = findViewById(R.id.notepad);
-        exit = findViewById(R.id.exit);
         llnotes = findViewById(R.id.llnotes);
+        fabMain = findViewById(R.id.fabMain);
+        fabUpload = findViewById(R.id.fabUpload);
+        fabExit = findViewById(R.id.fabExit);
+        fabApuntes = findViewById(R.id.fabApuntes);
+        fabExit.setVisibility(View.GONE);
+        fabApuntes.setVisibility(View.GONE);
+        fabUpload.setVisibility(View.GONE);
+
 
         storageReference = storage.getReference().child("pdf/" + auth.getCurrentUser().getUid() + "/pase.pdf");//
 
@@ -84,19 +93,68 @@ public class HomeActivity extends AppCompatActivity{
                 Toast.makeText(HomeActivity.this, "Error: No se encontro PDF.", Toast.LENGTH_SHORT).show();
             }
         });
+        fabMain.setOnClickListener(v -> {
+            if(fabApuntes.getVisibility()==View.GONE){
+                fabExit.setVisibility(View.VISIBLE);
+                fabApuntes.setVisibility(View.VISIBLE);
+                fabUpload.setVisibility(View.VISIBLE);
+            }else{
+                fabExit.setVisibility(View.GONE);
+                fabApuntes.setVisibility(View.GONE);
+                fabUpload.setVisibility(View.GONE);
+            }
 
-        upload.setOnClickListener(v -> {
+        });
+
+        fabUpload.setOnClickListener(v -> {
             Intent intent = new Intent(this, upload.class);
             startActivity(intent);
         });
-        notepad.setOnClickListener(v -> {
+        fabApuntes.setOnClickListener(v -> {
             Intent intent2 = new Intent(this, Mensajes.class);
             startActivity(intent2);
         });
-        exit.setOnClickListener(v -> {
+        fabExit.setOnClickListener(v -> {
             auth.signOut();
             startActivity(new Intent(HomeActivity.this, MainActivity.class));
             finish();
         });
+/*
+
+        */
     }
+
+
+  /*  @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.fab:
+
+                if(findViewById(R.id.llnotes).getVisibility()==View.VISIBLE){
+
+            findViewById(R.id.llnotes).setVisibility(View.INVISIBLE);
+//                findViewById(R.id.llupload).setVisibility(View.INVISIBLE);
+                upload.setVisibility(View.INVISIBLE);
+                exit.setVisibility(View.INVISIBLE);
+                notepad.setVisibility(View.INVISIBLE);
+                    ConstraintLayout.LayoutParams params = new  ConstraintLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(0, 0, 0, 0);
+                    findViewById(R.id.RL).setLayoutParams(params);
+                }
+                else{
+                    findViewById(R.id.llnotes).setVisibility(View.VISIBLE);
+//                findViewById(R.id.llupload).setVisibility(View.INVISIBLE);
+                    upload.setVisibility(View.VISIBLE);
+                    exit.setVisibility(View.VISIBLE);
+                    notepad.setVisibility(View.VISIBLE);
+                    ConstraintLayout.LayoutParams params = new  ConstraintLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(0, 0, 0, -100);
+                    findViewById(R.id.RL).setLayoutParams(params);
+                }
+                break;
+        }
+
+    }*/
 }

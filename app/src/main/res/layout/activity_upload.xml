@@ -18,9 +18,8 @@
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/pdfViewUpload"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="false"
             android:background="@drawable/ic_layered_waves_haikeitop">
 
         </com.github.barteksc.pdfviewer.PDFView>
