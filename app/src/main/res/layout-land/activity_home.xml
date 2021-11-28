@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/ic_class_notes"
             app:fabSize="mini"
             android:backgroundTint="#3368ff"
             app:borderWidth="0dp"/>
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/ic_upload"
             app:fabSize="mini"
             android:backgroundTint="#3368ff"
             app:borderWidth="0dp"/>
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/ic_door_exit"
             app:fabSize="mini"
             android:backgroundTint="#3368ff"
             app:borderWidth="0dp"/>
