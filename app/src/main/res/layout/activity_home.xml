@@ -37,16 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="mini" />
+            android:src="@drawable/ic_class_notes"
+            app:fabSize="mini"
+            android:backgroundTint="#3368ff"
+            app:borderWidth="0dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabUpload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="mini" />
+            android:src="@drawable/ic_upload"
+            app:fabSize="mini"
+            android:backgroundTint="#3368ff"
+            app:borderWidth="0dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -64,8 +68,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="mini" />
+            android:src="@drawable/ic_door_exit"
+            app:fabSize="mini"
+            android:backgroundTint="#3368ff"
+            app:borderWidth="0dp"/>
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -74,7 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="normal" />
+            app:fabSize="normal"
+            android:backgroundTint="#7178df"
+            app:borderWidth="0dp"/>
     </LinearLayout>
 
     <!--    <android.widget.Space-->
