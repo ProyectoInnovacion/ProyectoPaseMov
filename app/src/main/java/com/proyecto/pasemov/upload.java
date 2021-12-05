@@ -86,7 +86,7 @@ public class upload extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
                         putPDF putPDF=new putPDF("pase"+auth.getCurrentUser().getUid(),pdfUri.toString());
-                        databaseReference.child((databaseReference.push().getKey())).setValue(putPDF);
+                            databaseReference.setValue(putPDF);
                         Toast.makeText(upload.this, "Pase subido exitosamente!", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         Intent intent = new Intent(upload.this, HomeActivity.class);

@@ -24,9 +24,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,27 +43,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StreamDownloadTask;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
     StorageReference storageReference;
     FirebaseApp app;
     FirebaseStorage storage;
     PDFView pdfView;
-    DatabaseReference databaseReference;
-    ImageButton upload, notepad, exit;
     LinearLayout llnotes;
     FloatingActionButton fabMain, fabUpload, fabExit, fabApuntes;
-    Boolean EstadoMenu = false;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +92,12 @@ public class HomeActivity extends AppCompatActivity {
                 fabExit.setVisibility(View.VISIBLE);
                 fabApuntes.setVisibility(View.VISIBLE);
                 fabUpload.setVisibility(View.VISIBLE);
+                fabMain.setImageResource(R.drawable.ic_baseline_remove_24);
             }else{
                 fabExit.setVisibility(View.GONE);
                 fabApuntes.setVisibility(View.GONE);
                 fabUpload.setVisibility(View.GONE);
+                fabMain.setImageResource(R.drawable.ic_baseline_add_24);
             }
 
         });
@@ -119,10 +115,22 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(HomeActivity.this, MainActivity.class));
             finish();
         });
-/*
+        fabExit.setOnLongClickListener(v -> {
+            AuthUI.getInstance()
+                    .signOut(HomeActivity.this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>(){
 
-        */
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            startActivity(new Intent(HomeActivity.this, MainActivity.class));
+                            finish();
+
+                        }
+                    });
+                return true;}
+        );
     }
+
 
 
   /*  @Override

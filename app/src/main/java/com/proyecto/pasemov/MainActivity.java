@@ -28,10 +28,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 public class MainActivity extends AppCompatActivity {
-    GoogleSignInButton google;
+
     FirebaseAuth auth;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -41,17 +40,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-        google = findViewById(R.id.googleLogin);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        google.setOnClickListener(v -> {
             resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
-        });
     }
 
 
