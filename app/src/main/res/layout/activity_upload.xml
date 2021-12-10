@@ -24,13 +24,16 @@
 
         </com.github.barteksc.pdfviewer.PDFView>
 
-        <ImageButton
+        <Button
             android:id="@+id/txtClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="@drawable/blobboton"
-            android:gravity="center" />
+            android:backgroundTint="@color/black"
+            android:gravity="center"
+            android:text="@string/presione_aca_para_subir_un_archivo"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"

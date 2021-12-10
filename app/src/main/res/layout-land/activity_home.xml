@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:background="#F7770F">
+    android:background="#F7770F"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         android:id="@+id/RL"
         android:layout_width="wrap_content"
@@ -15,11 +17,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="-100dp">
 
+
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/pdfPrincipal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-10dp"
             android:background="@drawable/ic_layered_waves_haikeitop" />
 
     </RelativeLayout>
@@ -62,7 +65,18 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </com.google.android.gms.ads.AdView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabExit"
             android:layout_width="wrap_content"

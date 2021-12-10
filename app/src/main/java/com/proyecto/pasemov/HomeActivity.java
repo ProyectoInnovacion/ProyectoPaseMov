@@ -43,6 +43,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StreamDownloadTask;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -55,10 +58,16 @@ public class HomeActivity extends AppCompatActivity {
     FloatingActionButton fabMain, fabUpload, fabExit, fabApuntes;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private static final String TAG = "MainActivity";
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         auth = FirebaseAuth.getInstance();
         pdfView = findViewById(R.id.pdfPrincipal);
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -88,12 +97,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         fabMain.setOnClickListener(v -> {
-            if(fabApuntes.getVisibility()==View.GONE){
+            if (fabApuntes.getVisibility() == View.GONE) {
                 fabExit.setVisibility(View.VISIBLE);
                 fabApuntes.setVisibility(View.VISIBLE);
                 fabUpload.setVisibility(View.VISIBLE);
                 fabMain.setImageResource(R.drawable.ic_baseline_remove_24);
-            }else{
+            } else {
                 fabExit.setVisibility(View.GONE);
                 fabApuntes.setVisibility(View.GONE);
                 fabUpload.setVisibility(View.GONE);
@@ -116,18 +125,19 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
         fabExit.setOnLongClickListener(v -> {
-            AuthUI.getInstance()
-                    .signOut(HomeActivity.this)
-                    .addOnCompleteListener(new OnCompleteListener<Void>(){
+                    AuthUI.getInstance()
+                            .signOut(HomeActivity.this)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
 
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            startActivity(new Intent(HomeActivity.this, MainActivity.class));
-                            finish();
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    startActivity(new Intent(HomeActivity.this, MainActivity.class));
+                                    finish();
 
-                        }
-                    });
-                return true;}
+                                }
+                            });
+                    return true;
+                }
         );
     }
 

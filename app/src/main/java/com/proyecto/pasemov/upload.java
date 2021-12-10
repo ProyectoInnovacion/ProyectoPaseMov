@@ -31,7 +31,8 @@ import com.google.firebase.storage.UploadTask;
 
 public class upload extends AppCompatActivity {
 
-    ImageButton clickUpload,btnU,btnD;
+    ImageButton btnU,btnD;
+    Button clickUpload;
     PDFView pdfUpload;
     FirebaseStorage storage;
     Uri pdfUri;
