@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
+                            finish();
                             Toast.makeText(MainActivity.this, "Exito", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(MainActivity.this, "Ooops!", Toast.LENGTH_SHORT).show();
